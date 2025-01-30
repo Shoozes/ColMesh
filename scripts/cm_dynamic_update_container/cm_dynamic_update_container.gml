@@ -6,6 +6,11 @@ function cm_dynamic_update_container(dynamic, container)
 	var pAABB = CM_DYNAMIC_AABBPREV;
 	
 	var containerType = container[CM_TYPE];
+	if (containerType == CM_OBJECTS.DYNAMIC)
+	{
+		cm_dynamic_update_aabb(container);
+		return true;
+	}
 	if (containerType == CM_OBJECTS.SPATIALHASH)
 	{
 		var rsize = container[CM_SPATIALHASH.REGIONSIZE];
