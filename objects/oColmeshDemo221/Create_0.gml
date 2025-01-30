@@ -10,7 +10,7 @@ levelColmesh = undefined;//cm_load("ColMeshCache.ini");
 if (is_undefined(levelColmesh))
 {
 	var regionsize = 100;
-    levelColmesh = cm_octree(regionsize);
+    levelColmesh = cm_spatialhash(regionsize);
     cm_add_obj(levelColmesh, "Level.obj");
     cm_save(levelColmesh, "ColMeshCache.ini");
 }

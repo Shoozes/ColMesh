@@ -1,6 +1,6 @@
 function cm_collider_step_towards(collider, object, targetX, targetY, targetZ, mask = collider[CM.MASK])
 {
-	var stepLength = collider[CM.R] * .5;
+	var stepLength = collider[CM.R] * .95;
 	var d = point_distance_3d(collider[CM.X], collider[CM.Y], collider[CM.Z], targetX, targetY, targetZ);
 	var steps = ceil(d / stepLength);
 	var col = false;

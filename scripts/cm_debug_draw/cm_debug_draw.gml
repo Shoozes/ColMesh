@@ -1,5 +1,9 @@
 ////////////////////////////////////////
 // -- Debug draw --
+
+//THIS FUNCTION IS EXTREMELY SLOW. USE WITH CARE!//
+//It's usually better to bake the colmesh to a vertex buffer//
+
 global.__cmi_debug_draw = array_create(CM_OBJECTS.NUM);
 global.__cmi_debug_draw[CM_OBJECTS.COLLIDERCAPSULE]	= cm_collider_debug_draw;
 global.__cmi_debug_draw[CM_OBJECTS.RAY]				= cm_ray_draw;

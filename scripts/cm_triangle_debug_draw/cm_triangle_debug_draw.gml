@@ -1,12 +1,7 @@
 function cm_triangle_debug_draw(triangle, tex = -1, color = undefined, mask = 0)
 {
 	if (mask > 0 && (mask & CM_TRIANGLE_GROUP) == 0){return false;}
-	var vbuff = global.cm_vbuffers[CM_OBJECTS.FLSSTRIANGLE];
-	if (vbuff < 0)
-	{
-		vbuff = vertex_create_buffer();
-		global.cm_vbuffers[CM_OBJECTS.FLSSTRIANGLE] = vbuff;
-	}
+	static vbuff = vertex_create_buffer();
 	if (is_undefined(color))
 	{
 		color = c_white;

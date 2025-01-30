@@ -1,11 +1,11 @@
 function cm_spatialhash_get_region(spatialhash, AABB)
 {
 	static region = cm_list();
+	region[CM_LIST.SIZE] = CM_LIST.NUM;
 	var map = CM_SPATIALHASH_MAP;
 	var aabb = CM_SPATIALHASH_AABB;
 	if (is_undefined(aabb))
 	{
-		region[CM_LIST.SIZE] = CM_LIST.NUM;
 		return region;
 	}
 	var regionsize = CM_SPATIALHASH_REGIONSIZE;

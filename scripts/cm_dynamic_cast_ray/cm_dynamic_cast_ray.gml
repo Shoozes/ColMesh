@@ -8,8 +8,7 @@ function cm_dynamic_cast_ray(dynamic, ray, mask = ray[CM_RAY.MASK])
 	var p1 = matrix_transform_vertex(I, ray[CM_RAY.X1], ray[CM_RAY.Y1], ray[CM_RAY.Z1]);
 	var p2 = matrix_transform_vertex(I, ray[CM_RAY.X2], ray[CM_RAY.Y2], ray[CM_RAY.Z2]);
 	var localRay = cm_ray_clear(rays[CM_RECURSION], p1[0], p1[1], p1[2], p2[0], p2[1], p2[2], ray[CM_RAY.MASK]);
-	rays[CM_RECURSION] = localRay;
-	localRay[CM_RAY.T] = ray[CM_RAY.T];
+	localRay[@ CM_RAY.T] = ray[CM_RAY.T];
 	
 	//Increase recursion counter and perform a ray cast in local space
 	++ CM_RECURSION;
