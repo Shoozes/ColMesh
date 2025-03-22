@@ -50,9 +50,9 @@ function cm_capsule_cast_ray(capsule, ray, mask = ray[CM_RAY.MASK])
 		var ocz = (i <= 0) ? oaz : roz - z2;
 		b = dot_product_3d(rdx, rdy, rdz, ocx, ocy, ocz);
 		c = dot_product_3d(ocx, ocy, ocz, ocx, ocy, ocz) - R * R;
-		h = b * b - c;
-		if (h > 0) t = - b - sqrt(h);
-		else return ray;
+		h = b * b - rdrd * c;
+		if (h < 0) return ray;
+		t = (- b - sqrt(h)) / rdrd;
 	}
 	if (t < 0 || t > ray[CM_RAY.T]){return ray;}
 	
@@ -67,8 +67,8 @@ function cm_capsule_cast_ray(capsule, ray, mask = ray[CM_RAY.MASK])
 	ray[@ CM_RAY.Y] = itsY;
 	ray[@ CM_RAY.Z] = itsZ;
 	ray[@ CM_RAY.NX] = (itsX - lerp(x1, x2, n)) / R;
-	ray[@ CM_RAY.NY] = (itsY - lerp(x1, x2, n)) / R;
-	ray[@ CM_RAY.NZ] = (itsZ - lerp(x1, x2, n)) / R;
+	ray[@ CM_RAY.NY] = (itsY - lerp(y1, y2, n)) / R;
+	ray[@ CM_RAY.NZ] = (itsZ - lerp(z1, z2, n)) / R;
 	ray[@ CM_RAY.OBJECT] = capsule;
 	return ray;
 }

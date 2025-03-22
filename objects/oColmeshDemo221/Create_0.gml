@@ -6,7 +6,7 @@ globalvar levelColmesh;
 //levelColmesh = cm_spatialhash(100);
 //levelColmesh = cm_list();
 
-levelColmesh = undefined;//cm_load("ColMeshCache.ini");
+levelColmesh = cm_load("ColMeshCache.ini");
 if (is_undefined(levelColmesh))
 {
 	var regionsize = 100;
