@@ -4,7 +4,7 @@ function cm_octree_remove(octree, object)
 	var obj_aabb = cm_get_aabb(object);
 	
 	//Exit conditions
-	//if (obj_aabb[0] > oct_aabb[3] || obj_aabb[1] > oct_aabb[4] || obj_aabb[2] > oct_aabb[5] || obj_aabb[3] < oct_aabb[0] || obj_aabb[4] < oct_aabb[1] || obj_aabb[5] < oct_aabb[2]) return false;
+	if (obj_aabb[0] > oct_aabb[3] || obj_aabb[1] > oct_aabb[4] || obj_aabb[2] > oct_aabb[5] || obj_aabb[3] < oct_aabb[0] || obj_aabb[4] < oct_aabb[1] || obj_aabb[5] < oct_aabb[2]) return false;
 	if (!cm_list_remove(CM_OCTREE_OBJECTLIST, object)) return false;
 	if (!CM_OCTREE_SUBDIVIDED) return false;
 	

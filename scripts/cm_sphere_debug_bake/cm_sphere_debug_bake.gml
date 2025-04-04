@@ -3,7 +3,7 @@
 	Useful for batching shapes together when debugging.
 */
 
-function cm_sphere_debug_bake(sphere, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 2, vRep = 1, color = undefined, alpha = 1, hVerts = 40, vVerts = 20)
+function cm_sphere_debug_bake(sphere, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 2, vRep = 1, color = undefined, alpha = 1, hVerts = 28, vVerts = 16)
 {
 	if (mask != 0 && (mask & CM_SPHERE_GROUP) == 0){return false;}
 	

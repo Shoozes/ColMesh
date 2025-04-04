@@ -3,7 +3,7 @@
 	Useful for batching shapes together when debugging.
 */
 
-function cm_disk_debug_bake(disk, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, hVerts = 24, vVerts = 8)
+function cm_disk_debug_bake(disk, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, hVerts = 28, vVerts = 12)
 {
 	if (mask != 0 && (mask & CM_DISK_GROUP) == 0){return false;}
 	

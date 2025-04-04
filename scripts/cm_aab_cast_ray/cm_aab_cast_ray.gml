@@ -1,7 +1,8 @@
 function cm_aab_cast_ray(aab, ray, mask = ray[CM_RAY.MASK])
 {
 	/*
-		Casts a ray against the block
+		A supplementary function, not meant to be used by itself.
+		Used by colmesh.castRay
 	*/
 	if (mask != 0 && (mask & CM_AAB_GROUP) == 0){return ray;}
 	

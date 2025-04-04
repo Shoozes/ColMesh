@@ -34,9 +34,9 @@ function __cmi_cylinder_get_capsule_ref(cylinder, collider)
 	var upDp = dot_product_3d(cx, cy, cz, xup, yup, zup);
 		
 	//If the cylinders are parallel, finding the nearest point is trivial
-	if (upDp * upDp == H)
+	if (abs(upDp * upDp - H) < 0.0001)
 	{
-		var t = dot_product_3d(dx, dy, dz, xup, yup, zup);
+		var t = - dot_product_3d(dx, dy, dz, xup, yup, zup);
 		t = clamp(t, 0, height);
 		ret[0] = X + xup * t;
 		ret[1] = Y + yup * t;

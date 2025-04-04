@@ -18,14 +18,6 @@ function cm_triangle_debug_draw(triangle, tex = -1, color = undefined, mask = 0)
 	
 	var smooth = CM_TRIANGLE_TYPE == CM_OBJECTS.SMDSTRIANGLE || CM_TRIANGLE_TYPE == CM_OBJECTS.SMSSTRIANGLE;
 	var n = [CM_TRIANGLE_NX, CM_TRIANGLE_NY, CM_TRIANGLE_NZ];
-
-	if (shader_current() == -1)
-	{
-		shader_set(sh_cm_debug);	
-	}
-	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_radius"), 0);
-	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, 1);
-
 	
 	vertex_begin(vbuff, global.cm_format);
 	
@@ -49,9 +41,18 @@ function cm_triangle_debug_draw(triangle, tex = -1, color = undefined, mask = 0)
 	
 	vertex_end(vbuff);
 	
+	var reset = false;
+	if (shader_current() == -1)
+	{
+		shader_set(sh_cm_debug);	
+		reset = true;
+	}
+	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_radius"), 0);
+	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, 1);
+	
 	vertex_submit(vbuff, pr_trianglelist, tex);
 	
-	if (shader_current() == sh_cm_debug)
+	if (reset)
 	{
 		shader_reset();	
 	}

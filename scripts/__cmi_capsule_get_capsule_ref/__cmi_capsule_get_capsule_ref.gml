@@ -36,7 +36,7 @@ function __cmi_capsule_get_capsule_ref(capsule, collider)
 	//If the capsules are parallel, finding the nearest point is trivial
 	if (upDp * upDp == H)
 	{
-		var t = dot_product_3d(dx, dy, dz, xup, yup, zup);
+		var t = - dot_product_3d(dx, dy, dz, xup, yup, zup);
 		t = clamp(t, 0, height);
 		ret[0] = X + xup * t;
 		ret[1] = Y + yup * t;

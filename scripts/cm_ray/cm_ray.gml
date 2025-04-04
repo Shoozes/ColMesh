@@ -23,7 +23,7 @@ enum CM_RAY
 	NUM
 }
 
-function cm_ray(x1, y1, z1, x2, y2, z2, mask = 0)
+function cm_ray(x1, y1, z1, x2, y2, z2, mask = -1)
 {
 	return cm_ray_clear(undefined, x1, y1, z1, x2, y2, z2, mask);
 }

@@ -1,4 +1,4 @@
-function cm_spatialhash_debug_draw(spatialhash, tex = -1, color = -1, mask = 0)
+function cm_spatialhash_debug_draw(spatialhash, tex = -1, color = -1, alpha = 1, mask = 0)
 {
 	static region = cm_list();
 	var map = CM_SPATIALHASH_MAP;
@@ -13,5 +13,5 @@ function cm_spatialhash_debug_draw(spatialhash, tex = -1, color = -1, mask = 0)
 		size += num;
 	}
 	region[CM_LIST.SIZE] = array_unique_ext(region, 0, size);
-	cm_list_debug_draw(region, tex, color, mask);
+	cm_list_debug_draw(region, tex, color, alpha, mask);
 }

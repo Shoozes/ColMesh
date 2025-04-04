@@ -2,7 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function cm_load(filename)
 {
-	show_debug_message($"cm_load: Loading colmesh {filename}");
 	ini_open(filename);
 	var str = ini_read_string("Colmesh v2.0", "By TheSnidr, 2023", "");
 	ini_close();

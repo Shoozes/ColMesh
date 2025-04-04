@@ -53,7 +53,7 @@ if (is_array(D))
 
 //-----------------------------------------------------
 //	Avoid level geometry by stepping towards the target position
-if cm_collider_step_towards(collider, levelColmesh, x, y, z, CM_GROUP_SOLID)
+if cm_collider_step_towards(collider, LEVEL_COLMESH, x, y, z, CM_GROUP_SOLID)
 {
 	x = collider[CM.X];
 	y = collider[CM.Y];
@@ -63,7 +63,7 @@ ground = collider[CM.GROUND];
 
 //-----------------------------------------------------
 //	Check for collisions with triggers, and perform their collision functions if there is a collision
-cm_collider_activate_triggers(collider, levelColmesh, CM_GROUP_TRIGGER);
+cm_collider_activate_triggers(collider, LEVEL_COLMESH, CM_GROUP_TRIGGER);
 
 //-----------------------------------------------------
 //	Put player in the middle of the map if it falls off

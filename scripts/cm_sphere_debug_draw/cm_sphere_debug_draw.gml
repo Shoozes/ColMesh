@@ -1,13 +1,9 @@
-function cm_sphere_debug_draw(sphere, tex = -1, color = undefined, mask = -1)
+function cm_sphere_debug_draw(sphere, tex = -1, color = undefined, alpha = 1, mask = -1)
 {
 	if (mask > 0 && (mask & CM_SPHERE_GROUP) == 0){return false;}
 	
-	var vbuff = global.cm_vbuffers[CM_OBJECTS.SPHERE];
-	if (vbuff < 0)
-	{
-		vbuff = cm_create_sphere_vbuff(16, 12, 1, 1, c_white);
-		global.cm_vbuffers[CM_OBJECTS.SPHERE] = vbuff;
-	}
+	var vbuff = cm_get_vbuffer(sphere);
+	
 	if (is_undefined(color))
 	{
 		color = c_white;
@@ -30,7 +26,7 @@ function cm_sphere_debug_draw(sphere, tex = -1, color = undefined, mask = -1)
 		shader_set(sh_cm_debug);
 	}
 	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_radius"), CM_SPHERE_R * scale);
-	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, 1);
+	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, alpha);
 	
 	matrix_set(matrix_world, matrix_multiply(M, W));
 	vertex_submit(vbuff, pr_trianglelist, tex);

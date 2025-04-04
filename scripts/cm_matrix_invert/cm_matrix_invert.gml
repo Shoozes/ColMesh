@@ -16,7 +16,7 @@ function cm_matrix_invert(M, I = array_create(16))
 	var i12 = dot_product_3d(m12,  m13,  m14, -a, -d, -g);
 	var det =   m0 * i0 + m1 * i4 + m2 * i8 + m3 * i12;
 	if (det == 0){
-		show_debug_message("Error in function colmesh_matrix_invert: The determinant is zero.");
+		show_debug_message("Error in function cm_matrix_invert: The determinant is zero.");
 		return M;
 	}
 	var b   = m9 * m2  - m1 * m10;
@@ -48,5 +48,28 @@ function cm_matrix_invert(M, I = array_create(16))
 	I[@ 13] = invDet * dot_product_3d(m12, m13, m14, -b, -e, -h);
 	I[@ 14] = invDet * dot_product_3d(m12, m13, m14, -c, -f, -i);
 	I[@ 15] = invDet * dot_product_3d(m0,  m4,  m8,   a,  b,  c);
+	return I;
+}
+/*
+function cm_matrix_invert_proj(M, I = array_create(16))
+{
+	//Proper matrix inversion
+	var m0 = M[0], m5 = M[5], m10 = M[10], m11 = M[11], m14 = M[14];
+	I[@ 0]  = 1 / m0;
+	I[@ 1]  = 0;
+	I[@ 2]  = 0;
+	I[@ 3]  = 0;
+	I[@ 4]  = 0;
+	I[@ 5]  = 1 / m5;
+	I[@ 6]  = 0;
+	I[@ 7]  = 0;
+	I[@ 8]  = 0;
+	I[@ 9]  = 0;
+	I[@ 10] = 0;
+	I[@ 11] = 1 / m14;
+	I[@ 12] = 0;
+	I[@ 13] = 0;
+	I[@ 14] = 1 / m11;
+	I[@ 15] = - m10 / (m14 * m11);
 	return I;
 }

@@ -12,7 +12,7 @@ function cm_octree_cast_ray(octree, ray, mask = ray[CM_RAY.MASK])
 	
 	if (!subdivided)
 	{
-		return cm_list_cast_ray(CM_OCTREE_OBJECTLIST, ray);
+		return cm_list_cast_ray(CM_OCTREE_OBJECTLIST, ray, mask);
 	}
 	
 	var lox = ray[CM_RAY.X1] - aabb[0];
@@ -29,7 +29,7 @@ function cm_octree_cast_ray(octree, ray, mask = ray[CM_RAY.MASK])
 	var child = octree[CM_OCTREE.CHILD1 + rx + 2 * ry + 4 * rz];
 	if (is_array(child))
 	{
-		cm_octree_cast_ray(child, ray);
+		cm_octree_cast_ray(child, ray, mask);
 	}
 	
 	//Perform a ray cast against subsequent regions in order

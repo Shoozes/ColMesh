@@ -1,9 +1,5 @@
 ////////////////////////////////////////
 // -- Debug draw --
-
-//THIS FUNCTION IS EXTREMELY SLOW. USE WITH CARE!//
-//It's usually better to bake the colmesh to a vertex buffer//
-
 global.__cmi_debug_draw = array_create(CM_OBJECTS.NUM);
 global.__cmi_debug_draw[CM_OBJECTS.COLLIDERCAPSULE]	= cm_collider_debug_draw;
 global.__cmi_debug_draw[CM_OBJECTS.RAY]				= cm_ray_draw;
@@ -24,7 +20,7 @@ global.__cmi_debug_draw[CM_OBJECTS.BOX]				= cm_box_debug_draw;
 global.__cmi_debug_draw[CM_OBJECTS.DISK]			= cm_disk_debug_draw;
 global.__cmi_debug_draw[CM_OBJECTS.TORUS]			= cm_torus_debug_draw;
 #macro CM_DEBUG_DRAW global.__cmi_debug_draw[object[0]]
-function cm_debug_draw(object, tex = -1, color = -1, mask = 0)
+function cm_debug_draw(object, tex = -1, color = -1, alpha = 1, mask = 0)
 {
-	return CM_DEBUG_DRAW(object, tex, color, mask);
+	return CM_DEBUG_DRAW(object, tex, color, alpha, mask);
 }

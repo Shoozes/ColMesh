@@ -15,6 +15,6 @@ void main()
 	gl_FragColor.rgb *= v_vShade;
 	
 	#ifdef GL_EXT_frag_depth
-		gl_FragDepthEXT = v_vPos.z / v_vPos.w + .00001;
+		gl_FragDepthEXT = v_vPos.z / v_vPos.w - .00001;
 	#endif
 }

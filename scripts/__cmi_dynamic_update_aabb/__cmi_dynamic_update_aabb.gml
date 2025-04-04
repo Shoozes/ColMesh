@@ -1,4 +1,4 @@
-function cm_dynamic_update_aabb(dynamic)
+function __cmi_dynamic_update_aabb(dynamic)
 {
 	//Returns the AABB of the shape as an array with six values
 	var mm = cm_get_aabb(CM_DYNAMIC_OBJECT);

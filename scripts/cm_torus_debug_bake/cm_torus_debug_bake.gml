@@ -3,7 +3,7 @@
 	Useful for batching shapes together when debugging.
 */
 
-function cm_torus_debug_bake(torus, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, hVerts = 20, vVerts = 10)
+function cm_torus_debug_bake(torus, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, hVerts = 32, vVerts = 16)
 {
 	if (mask != 0 && (mask & CM_TORUS_GROUP) == 0){return false;}
 	

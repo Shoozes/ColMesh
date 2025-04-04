@@ -1,24 +1,24 @@
 //-----------------------------------------------------
 //	Create a new colmesh for the level
-globalvar levelColmesh;
-//levelColmesh = cm_octree(100);
-//levelColmesh = cm_quadtree(100);
-//levelColmesh = cm_spatialhash(100);
-//levelColmesh = cm_list();
+globalvar LEVEL_COLMESH;
+//LEVEL_COLMESH = cm_octree(100);
+//LEVEL_COLMESH = cm_quadtree(100);
+//LEVEL_COLMESH = cm_spatialhash(100);
+//LEVEL_COLMESH = cm_list();
 
-levelColmesh = cm_load("ColMeshCache.ini");
-if (is_undefined(levelColmesh))
+LEVEL_COLMESH = undefined;//cm_load("ColMeshCache.ini");
+if (is_undefined(LEVEL_COLMESH))
 {
 	var regionsize = 100;
-    levelColmesh = cm_spatialhash(regionsize);
-    cm_add_obj(levelColmesh, "Level.obj");
-    cm_save(levelColmesh, "ColMeshCache.ini");
+    LEVEL_COLMESH = cm_octree(regionsize);
+    cm_add_obj(LEVEL_COLMESH, "Level.obj");
+    cm_save(LEVEL_COLMESH, "ColMeshCache.ini");
 }
 
 //-----------------------------------------------------
-//	Load level geometry from obj and add it to the levelColmesh
+//	Load level geometry from obj and add it to the LEVEL_COLMESH
 var matrix = matrix_build(room_width / 2, room_height / 2, 0, -90, 0, 0, 1, - 1, 1);
-cm_add_obj(levelColmesh, "ColMesh Demo/Demo1Level.obj", matrix, true);
+cm_add_obj(LEVEL_COLMESH, "ColMesh Demo/Demo1Level.obj", matrix, true);
 
 //-----------------------------------------------------
 //  Load tree model and add 10 copies of it to the level
@@ -29,10 +29,10 @@ repeat 10
 {
 	var xx = random(room_width);
 	var yy = random(room_height);
-	var ray = cm_cast_ray(levelColmesh, cm_ray(xx, yy, 1000, xx, yy, -1000));
+	var ray = cm_cast_ray(LEVEL_COLMESH, cm_ray(xx, yy, 1000, xx, yy, -1000));
 	var zz = cm_ray_get_z(ray);
 	var scale = .8 + random(.4);
-	cm_add(levelColmesh, cm_dynamic(treeMesh, matrix_build(xx, yy, zz, 0, 0, random(360), scale, scale, scale), false));
+	cm_add(LEVEL_COLMESH, cm_dynamic(treeMesh, matrix_build(xx, yy, zz, 0, 0, random(360), scale, scale, scale), false));
 }
 
 

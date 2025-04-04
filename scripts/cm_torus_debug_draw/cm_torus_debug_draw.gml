@@ -1,13 +1,9 @@
-function cm_torus_debug_draw(torus, tex = -1, color = undefined, mask = 0)
+function cm_torus_debug_draw(torus, tex = -1, color = undefined, alpha = 1, mask = 0)
 {
 	if (mask > 0 && (mask & CM_TORUS_GROUP) == 0){return false;}
 	
-	var vbuff = global.cm_vbuffers[CM_OBJECTS.TORUS];
-	if (vbuff < 0)
-	{
-		vbuff = cm_create_torus_vbuff(25, 12, 1, 1, c_white);
-		global.cm_vbuffers[CM_OBJECTS.TORUS] = vbuff;
-	}
+	var vbuff = cm_get_vbuffer(torus);
+	
 	if (is_undefined(color))
 	{
 		color = c_white;
@@ -34,20 +30,19 @@ function cm_torus_debug_draw(torus, tex = -1, color = undefined, mask = 0)
 	var scale = point_distance_3d(0, 0, 0, W[0], W[1], W[2]);
 	cm_matrix_build_from_vector(cx, cy, cz, nx, ny, nz, R, R, R, M);
 		
+	var reset = false;
 	if (shader_current() == -1)
 	{
 		shader_set(sh_cm_debug);	
+		reset = true;
 	}
 	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_radius"), r * scale);
-	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, 1);
+	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, alpha);
 	matrix_set(matrix_world, matrix_multiply(M, W));
 	vertex_submit(vbuff, pr_trianglelist, tex);
 	matrix_set(matrix_world, W);
 	
-	if (shader_current() == sh_cm_debug)
-	{
-		shader_reset();	
-	}
+	if (reset) shader_reset();	
 }
 
 function cm_create_torus_vbuff(hVerts, vVerts, hRep, vRep, color)

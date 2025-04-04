@@ -9,8 +9,8 @@
 #macro CM_GROUP_SOLID		(1 << 0) //This is the only group that must NOT be removed! The rest can be modified.
 #macro CM_GROUP_TRIGGER		(1 << 1)
 #macro CM_GROUP_OTHER		(1 << 2)
-#macro CM_GROUP_GRASS		(1 << 3)
-#macro CM_GROUP_METAL		(1 << 4)
+#macro CM_GROUP_LEVEL		(1 << 3)
+#macro CM_GROUP_GRAVITY		(1 << 4)
 
 global.cm_recursion = 0;
 #macro CM_RECURSION global.cm_recursion
@@ -74,7 +74,7 @@ CM_CUSTOM_POS[CM_OBJECTS.CYLINDER]			= CM_CYLINDER.NUM;
 CM_CUSTOM_POS[CM_OBJECTS.AAB]				= CM_AAB.NUM;
 CM_CUSTOM_POS[CM_OBJECTS.BOX]				= CM_BOX.NUM;
 CM_CUSTOM_POS[CM_OBJECTS.DISK]				= CM_DISK.NUM;
-CM_CUSTOM_POS[CM_OBJECTS.TORUS]			= CM_TORUS.NUM;
+CM_CUSTOM_POS[CM_OBJECTS.TORUS]				= CM_TORUS.NUM;
 
 function cm_debug_message(str)
 {
@@ -91,7 +91,9 @@ vertex_format_add_normal();
 vertex_format_add_texcoord();
 vertex_format_add_color();
 global.cm_format = vertex_format_end();
+
 global.cm_vbuffers = array_create(CM_OBJECTS.NUM, -1);
+global.cm_vbuffers_wf = array_create(CM_OBJECTS.NUM, -1);
 
 //Check if the given object is a container
 function __cmi_is_container(object)
@@ -117,7 +119,7 @@ global.__cmi_get_priority[CM_OBJECTS.BOX]				= __cmi_box_get_priority;
 global.__cmi_get_priority[CM_OBJECTS.DISK]				= __cmi_disk_get_priority;
 global.__cmi_get_priority[CM_OBJECTS.TORUS]				= __cmi_torus_get_priority;
 #macro CM_GET_PRIORITY global.__cmi_get_priority[object[0]]
-function cm_get_priority(object, collider, mask)
+function cm_get_priority(object, collider, mask = 0)
 {
 	return CM_GET_PRIORITY(object, collider, mask);
 }

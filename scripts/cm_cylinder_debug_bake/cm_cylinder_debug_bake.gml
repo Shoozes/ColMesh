@@ -3,7 +3,7 @@
 	Useful for batching shapes together when debugging.
 */
 
-function cm_cylinder_debug_bake(cylinder, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, steps = 16)
+function cm_cylinder_debug_bake(cylinder, vbuff, matrix = matrix_build_identity(), mask = 0, hRep = 1, vRep = 1, color = undefined, alpha = 1, steps = 20)
 {
 	if (mask != 0 && (mask & CM_CYLINDER_GROUP) == 0){return false;}
 	

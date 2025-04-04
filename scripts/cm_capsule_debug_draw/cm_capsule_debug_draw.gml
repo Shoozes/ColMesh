@@ -1,13 +1,9 @@
-function cm_capsule_debug_draw(capsule, tex = -1, color = undefined, mask = 0)
+function cm_capsule_debug_draw(capsule, tex = -1, color = undefined, alpha = 1, mask = 0)
 {
 	if (mask > 0 && (mask & CM_CAPSULE_GROUP) == 0){return false;}
 	
-	var vbuff = global.cm_vbuffers[CM_OBJECTS.CAPSULE];
-	if (vbuff < 0)
-	{
-		vbuff = cm_create_capsule_vbuff(20, 20, 1, 1, c_white);
-		global.cm_vbuffers[CM_OBJECTS.CAPSULE] = vbuff;
-	}
+	var vbuff = cm_get_vbuffer(capsule);
+	
 	if (is_undefined(color))
 	{
 		color = c_white;
@@ -38,7 +34,7 @@ function cm_capsule_debug_draw(capsule, tex = -1, color = undefined, mask = 0)
 		shader_set(sh_cm_debug);	
 	}
 	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_radius"), CM_CAPSULE_R * scale);
-	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, 1);
+	shader_set_uniform_f(shader_get_uniform(shader_current(), "u_color"), color_get_red(color) / 255, color_get_green(color) / 255, color_get_blue(color) / 255, alpha);
 	matrix_set(matrix_world, matrix_multiply(M, W));
 	vertex_submit(vbuff, pr_trianglelist, tex);
 	matrix_set(matrix_world, W);

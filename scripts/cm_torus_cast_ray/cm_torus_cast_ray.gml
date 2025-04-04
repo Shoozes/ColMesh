@@ -24,9 +24,12 @@ function cm_torus_cast_ray(torus, ray, mask = ray[CM_RAY.MASK])
 	var nz = CM_TORUS_NZ;
 	var R = CM_TORUS_BIGRADIUS;
 	
-	var sx = ny * z1 - nz * y1;
-	var sy = nz * x1 - nx * z1;
-	var sz = nx * y1 - ny * x1;
+	static __x = 1;
+	static __y = sqrt(2);
+	static __z = pi;
+	var sx = ny * __z - nz * __y;
+	var sy = nz * __x - nx * __z;
+	var sz = nx * __y - ny * __x;
 	var s = point_distance_3d(0, 0, 0, sx, sy, sz);
 	sx /= s;
 	sy /= s;
@@ -36,7 +39,7 @@ function cm_torus_cast_ray(torus, ray, mask = ray[CM_RAY.MASK])
 	var tz = sx * ny - sy * nx;
 	
 	var lox = dot_product_3d(x1, y1, z1, tx, ty, tz) / R;
-	var loy = 0; //Per definition
+	var loy = dot_product_3d(x1, y1, z1, sx, sy, sz) / R;
 	var loz = dot_product_3d(x1, y1, z1, nx, ny, nz) / R;
 	
 	var ldx = dot_product_3d(dx, dy, dz, tx, ty, tz) / R;

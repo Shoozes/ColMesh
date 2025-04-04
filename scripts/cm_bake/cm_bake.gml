@@ -7,6 +7,5 @@ function cm_bake(object, matrix = matrix_build_identity(), mask = 0, hrep = 1, v
 	cm_vbuff_begin(vbuff);
 	cm_vbuff_bake(object, vbuff, matrix, mask, hrep, vrep, color, alpha);
 	cm_vbuff_end(vbuff);
-	vertex_freeze(vbuff);
 	return vbuff;
 }

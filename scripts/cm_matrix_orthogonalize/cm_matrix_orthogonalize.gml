@@ -10,7 +10,7 @@ function cm_matrix_orthogonalize(M, to = false)
 	if (to)
 	{
 		var l = point_distance_3d(0, 0, 0, M[0], M[1], M[2]);
-		if (l != 0)
+		if (l != 0 && l != 1)
 		{
 			M[@ 0] /= l;
 			M[@ 1] /= l;
@@ -22,7 +22,7 @@ function cm_matrix_orthogonalize(M, to = false)
 		M[@ 9]  -= M[1] * dp;
 		M[@ 10] -= M[2] * dp;
 		l = point_distance_3d(0, 0, 0, M[8], M[9], M[10]);
-		if (l != 0)
+		if (l != 0 && l != 1)
 		{
 			l = 1 / l;
 			M[@ 8] *= l;
@@ -33,7 +33,7 @@ function cm_matrix_orthogonalize(M, to = false)
 	else
 	{
 		var l = point_distance_3d(0, 0, 0, M[8], M[9], M[10]);
-		if (l != 0)
+		if (l != 0 && l != 1)
 		{
 			M[@ 8]  /= l;
 			M[@ 9]  /= l;
@@ -45,7 +45,7 @@ function cm_matrix_orthogonalize(M, to = false)
 		M[@ 1] -= M[9]  * dp;
 		M[@ 2] -= M[10] * dp;
 		l = point_distance_3d(0, 0, 0, M[0], M[1], M[2]);
-		if (l != 0)
+		if (l != 0 && l != 1)
 		{
 			M[@ 0] /= l;
 			M[@ 1] /= l;

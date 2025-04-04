@@ -27,6 +27,6 @@ function cm_box(M, group = CM_GROUP_SOLID)
 					point_distance_3d(0, 0, 0, M[0], M[1], M[2]),
 					point_distance_3d(0, 0, 0, M[4], M[5], M[6]),
 					point_distance_3d(0, 0, 0, M[8], M[9], M[10]));
-	CM_BOX_I = cm_matrix_invert_orientation(m);	
+	CM_BOX_I = matrix_inverse(m);	
 	CM_BOX_END;
 } 

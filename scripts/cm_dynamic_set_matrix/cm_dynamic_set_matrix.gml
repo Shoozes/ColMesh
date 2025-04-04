@@ -33,5 +33,5 @@ function cm_dynamic_set_matrix(dynamic, matrix, moving)
 	cm_matrix_invert_orientation(M, I);
 	
 	//Update AABB
-	cm_dynamic_update_aabb(dynamic);
+	__cmi_dynamic_update_aabb(dynamic);
 }
