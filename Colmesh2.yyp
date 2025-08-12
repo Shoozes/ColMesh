@@ -1,5 +1,5 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"Colmesh2",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
@@ -61,6 +61,7 @@
     {"$GMFolder":"","%Name":"Internal","folderPath":"folders/ColMesh2/4 Containers/4 Octree/Internal.yy","name":"Internal","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"9 Demo","folderPath":"folders/ColMesh2/9 Demo.yy","name":"9 Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"Car_chassis.obj","CopyToMask":-1,"filePath":"datafiles/ColMesh Demo","name":"Car_chassis.obj","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Car_wheel.obj","CopyToMask":-1,"filePath":"datafiles/ColMesh Demo","name":"Car_wheel.obj","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -84,7 +85,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"Colmesh2",
   "resources":[

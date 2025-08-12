@@ -3,7 +3,7 @@
 
 function cm_add_smf(container, smfmodel, matrix = undefined, singlesided = true, smoothnormals = false, group = CM_GROUP_SOLID)
 {
-	var n = [0, 0, 0];
+	var n = [undefined, undefined, undefined];
 	var v, normalmatrix;
 	var models = smfmodel.mBuff;
 	var modelNum = array_length(models);
@@ -35,7 +35,7 @@ function cm_add_smf(container, smfmodel, matrix = undefined, singlesided = true,
 				buffer_seek(mbuff, buffer_seek_relative, mbuff_bytes_per_vertex);
 			}
 			
-			cm_add(container, cm_triangle(singlesided, v[0][0], v[0][1], v[0][2], v[1][0], v[1][1], v[1][2], v[2][0], v[2][1], v[2][2], n[0], n[1], m[2], group));
+			cm_add(container, cm_triangle(singlesided, v[0][0], v[0][1], v[0][2], v[1][0], v[1][1], v[1][2], v[2][0], v[2][1], v[2][2], n[0], n[1], n[2], group));
 		}
 	}
 	cm_debug_message("Script cm_add_smf: Successfully added SMF model to colmesh");
